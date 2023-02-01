@@ -1,26 +1,19 @@
 body {
-    margin: 0;
+    background-color: black;
 }
 
 #canvas {
-    background-color: grey;
-    margin: 0;
+    width: 900px;
+    height: 600px;
+    background-color: brown;
+    position:relative;
 }
 
-#canvas td {
+#player{
+    position:absolute;
     width: 20px;
     height: 20px;
-    border: 0;
-    background-color: aqua;
-    /* border: 1px solid black; */
-}
-
-#canvas tr {
-    width: 20px;
-    height: 20px;
-    border: 0;
-}
-
-#canvas td.fruit {
-    background-color: red;
+    background-color: blue;
+    left: 250px;
+    top: 100px;
 }

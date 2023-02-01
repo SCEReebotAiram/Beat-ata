@@ -1,41 +1,34 @@
 const canvas = document.getElementById('canvas')
-
-let Fruit = function (name, position) {
-    let self = this
-    this.name = name,
-        this.position = position
-    this.mousePosition = {}
-    this.checkCollision = function () {
-        console.log(this.mousePosition.x >= this.position.topLeft.x && this.mousePosition.x <= this.position.botRight.x
-            && this.mousePosition.y >= this.position.topLeft.y && this.mousePosition.y <= this.position.botRight.y)
-    }
-
-    this.updateMousePosition = function (e) {
-        canvas.addEventListener('mousemove', function (e) {
-            self.mousePosition.x = e.clientX
-            self.mousePosition.y = e.clientY
-
-        })
-    }
-}
-
-const manzana = new Fruit('manzana', {
-    topLeft: { x: 80, y: 80 },
-    topRight: { x: 100, y: 80 },
-    botLeft: { x: 80, y: 100 },
-    botRight: { x: 100, y: 100 },
+const player = document.getElementById('player')
+player.setAttribute('class', 'manzana')
+player.addEventListener('mouseover', function(){
+    console.log('mouseovering', clicking)
 })
 
-manzana.updateMousePosition();
-let timerId = setInterval(function () {
-    manzana.checkCollision()
-}, 2000)
-// manzana.checkCollision();
+
+let clicking = false;
+
+const Fruit = function (positionX, positionY,width, heigth ){
+    this.positionX = positionX,
+    this.positionY = positionY,
+    this.width = width,
+    this.heigth = heigth
+} 
+
+let manzana = new Fruit(250, 100, 20, 20);
+console.log(manzana)
+
+canvas.onclick = function(){
+    console.log('clickeado canvas')
+}
+
+canvas.onmousedown = function(){
+    clicking = !clicking
+}
+
+canvas.onmouseup =  function () {
+    clicking = !clicking
+}
 
 
-// console.log(manzana.position.topLeft);
-
-// canvas.addEventListener('mousemove', function (e) {
-//     console.log(`x:${e.clientX}, y: ${e.clientY}`)
-// })
 
