@@ -13,20 +13,21 @@ body {
     position: absolute;
     width: 40px;
     height: 40px;
-    background-color: blue;
-
+    /* background-image: url('assets/apple.png'); */
+    /* background-color: white; */
+    
 }
 
 .pear {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: rgb(42, 67, 6);
+    width: 40px;
+    height: 40px;
+    /* background-image: url('assets/pear.png'); */
 }
 
 .peach {
     position: absolute;
-    width: 50px;
-    height: 50px;
-    background-color: rgb(241, 158, 50);
+    width: 40px;
+    height: 40px;
+    /* background-image: url('./assets/peach.png'); */
 }
