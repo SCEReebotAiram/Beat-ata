@@ -9,11 +9,29 @@ body {
     position:relative;
 }
 
-#player{
+.apple{
     position:absolute;
     width: 20px;
     height: 20px;
     background-color: blue;
     left: 250px;
     top: 100px;
+}
+
+.pear {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: greenyellow;
+    left: 300px;
+    top: 400px;
+}
+
+.peach {
+    position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: rgb(241, 158, 50);
+        /* left: 120px; */
+        top: 40px;
 }
