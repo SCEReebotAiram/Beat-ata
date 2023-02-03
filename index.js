@@ -1,15 +1,28 @@
 let clicking = false;
-
+//Funcion constructora partida
 const Game = function () {
     let timerId = setInterval(function () {
         new Fruit()
-        
     }, 5000)
+
+    //Contador de tiempo
+    let gameTime = setTimeout(function () {
+        partida.gameOver()
+    }, 30000)
+
+    //Contador de frutas
+       this.hitCounter = 0
+        /*if (dettectCollision = true){
+            let counter = 0;
+            counter ++
+        } */
 
     this.gameOver = function (){
         clearInterval(timerId)
     }
 }
+
+//Funcion constructora fruta
 const Fruit = function (width, heigth) {
     let self = this
     let fruitNest = [
@@ -41,14 +54,14 @@ const Fruit = function (width, heigth) {
     this.element.style.backgroundImage = this.selectedFruit.image
     this.element.style.backgroundSize = 'contain'
     this.element.style.left = this.maxRandomNumber(900-this.selectedFruit.width) + 'px'
-    this.positionTop = 50
+    this.positionTop = 0
     this.addTopId = setInterval(function () {
-        self.positionTop = self.positionTop + 50
+        self.positionTop = self.positionTop + 1
         self.element.style.top = self.positionTop + 'px'
-    },500)
+    },10)
     this.element.style.top = self.positionTop + 'px'
     this.checkPositionFruit = setInterval(function (e) {
-        if (parseInt(self.element.style.top.slice(0, -2)) > 550 && self.element.parentNode) {
+        if (parseInt(self.element.style.top.slice(0, -2)) > 600 && self.element.parentNode) {
             clearInterval(self.addTopId)
             clearInterval(self.checkPositionFruit)
             self.element.parentNode.removeChild(self.element)
@@ -58,6 +71,7 @@ const Fruit = function (width, heigth) {
         if (clicking) {
             let canvas = e.target.parentNode
             canvas.removeChild(e.target)
+            console.log(e)
         }
     }
     this.element.addEventListener('mouseover', this.dettectCollision)
@@ -65,6 +79,7 @@ const Fruit = function (width, heigth) {
     this.canvas.appendChild(this.element)
 }
 
+//Deteccion corte
 canvas.onmousedown = function () {
     clicking = !clicking
 }
@@ -74,11 +89,6 @@ canvas.onmouseup = function () {
 
 
 let partida = new Game()
-setTimeout(function(){
-    partida.gameOver()
-},30000)
-
-console.log()
 
 
 
