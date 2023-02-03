@@ -2,7 +2,18 @@ body {
     background-color: black;
 }
 
+#startScreen {
+    margin: auto;
+    display: block;
+    width: 900px;
+    height: 600px;
+    background-color: white;
+    z-index: 1;
+}
+
 #canvas {
+    margin: auto;
+    display: block;
     width: 900px;
     height: 600px;
     background-color: brown;
@@ -12,7 +23,8 @@ body {
 .apple {
     position: absolute;
     width: 40px;
-    height: 40px;  
+    height: 40px;
+    z-index: 0;  
 }
 
 .pear {
@@ -26,3 +38,4 @@ body {
     width: 40px;
     height: 40px;
 }
+

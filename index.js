@@ -17,18 +17,18 @@ const Fruit = function (width, heigth) {
             name: 'apple',
             width: 40,
             heigth: 40,
-            image: "url('./assets/apple.png')",
+            image: "url('./assets/images/apple.png')",
         }, {
             name: 'pear',
             width: 40,
             heigth: 40,
-            image: "url('./assets/pear.png')",
+            image: "url('./assets/images/pear.png')",
 
         }, {
             name: 'peach',
             width: 40,
             heigth: 40,
-            image: "url('./assets/peach.png')",
+            image: "url('./assets/images/peach.png')",
         }
     ]
     this.element = document.createElement('div')
@@ -48,12 +48,12 @@ const Fruit = function (width, heigth) {
     },1)
     this.element.style.top = self.positionTop + 'px'
     this.checkPositionFruit = setInterval(function (e) {
-        if (parseInt(self.element.style.top.slice(0, -2)) > 550 && self.element.parentNode) {
+        if (parseInt(self.element.style.top.slice(0, -2)) > 600 && self.element.parentNode) {
             clearInterval(self.addTopId)
             clearInterval(self.checkPositionFruit)
             self.element.parentNode.removeChild(self.element)
         }
-    },50)
+    },10)
     this.dettectCollision = function (e) {
         if (clicking) {
             let canvas = e.target.parentNode
