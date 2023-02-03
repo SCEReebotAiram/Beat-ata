@@ -2,7 +2,7 @@ let clicking = false;
 
 const Game = function () {
     let timerId = setInterval(function () {
-        console.log(new Fruit())
+        new Fruit()
         
     }, 5000)
 
@@ -11,7 +11,7 @@ const Game = function () {
     }
 }
 const Fruit = function (width, heigth) {
-    self = this
+    let self = this
     let fruitNest = [
         {
             name: 'apple',
@@ -31,7 +31,6 @@ const Fruit = function (width, heigth) {
             image: "url('./assets/peach.png')",
         }
     ]
-
     this.element = document.createElement('div')
     this.maxRandomNumber = function (max = 880) {
         return Math.floor(Math.random() * max)
@@ -42,6 +41,12 @@ const Fruit = function (width, heigth) {
     this.element.style.backgroundImage = this.selectedFruit.image
     this.element.style.backgroundSize = 'contain'
     this.element.style.left = this.maxRandomNumber(900-this.selectedFruit.width) + 'px'
+    this.positionTop = 50
+    this.addTopId = setInterval(function() {
+        self.positionTop = self.positionTop+50
+        self.element.style.top = self.positionTop + 'px'
+    },2000)
+    this.element.style.top = self.positionTop + 'px'
     this.dettectCollision = function (e) {
         if (clicking) {
             let canvas = e.target.parentNode
@@ -64,7 +69,7 @@ canvas.onmouseup = function () {
 let partida = new Game()
 setTimeout(function(){
     partida.gameOver()
-},20001)
+},30000)
 
 
 

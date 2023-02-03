@@ -12,22 +12,17 @@ body {
 .apple {
     position: absolute;
     width: 40px;
-    height: 40px;
-    /* background-image: url('assets/apple.png'); */
-    /* background-color: white; */
-    
+    height: 40px;  
 }
 
 .pear {
     position: absolute;
     width: 40px;
     height: 40px;
-    /* background-image: url('assets/pear.png'); */
 }
 
 .peach {
     position: absolute;
     width: 40px;
     height: 40px;
-    /* background-image: url('./assets/peach.png'); */
 }
