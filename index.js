@@ -42,11 +42,18 @@ const Fruit = function (width, heigth) {
     this.element.style.backgroundSize = 'contain'
     this.element.style.left = this.maxRandomNumber(900-this.selectedFruit.width) + 'px'
     this.positionTop = 50
-    this.addTopId = setInterval(function() {
-        self.positionTop = self.positionTop+50
+    this.addTopId = setInterval(function () {
+        self.positionTop = self.positionTop + 50
         self.element.style.top = self.positionTop + 'px'
-    },2000)
+    },500)
     this.element.style.top = self.positionTop + 'px'
+    this.checkPositionFruit = setInterval(function (e) {
+        if (parseInt(self.element.style.top.slice(0, -2)) > 550 && self.element.parentNode) {
+            clearInterval(self.addTopId)
+            clearInterval(self.checkPositionFruit)
+            self.element.parentNode.removeChild(self.element)
+        }
+    },500)
     this.dettectCollision = function (e) {
         if (clicking) {
             let canvas = e.target.parentNode
