@@ -1,3 +1,7 @@
+let soundCollision = new Audio('../assets/sounds/slashkut.mp3');
+let gameOverSound = new Audio('../assets/sounds/game-over.mp3');
+let fruitDissFCanvas = new Audio('../assets/sounds/box-crash.mp3');
+
 let clicking = false;
 const buttonStart = document.getElementById('start-game-btn')
 buttonStart.addEventListener('click', function () {
@@ -15,12 +19,11 @@ buttonStart.addEventListener('click', function () {
 
 
 const Game = function () {
+    let startSound = new Audio('../assets/sounds/happy.mp3');
     let timerId = setInterval(function () {
         new Fruit()
-
-    }, 1000)
-
-    this.gameOver = function () {
+    }, 5000)
+    this.gameOver = function (){
         clearInterval(timerId)
     }
 }
@@ -70,12 +73,14 @@ const Fruit = function (width, heigth) {
             clearInterval(self.addTopId)
             clearInterval(self.checkPositionFruit)
             self.element.parentNode.removeChild(self.element)
+            fruitDissFCanvas.play()
         }
     }, 10)
     this.dettectCollision = function (e) {
         if (clicking) {
             let canvas = e.target.parentNode
             canvas.removeChild(e.target)
+            soundCollision.play()
         }
     }
     this.element.addEventListener('mouseover', this.dettectCollision)
@@ -91,6 +96,12 @@ canvas.onmouseup = function () {
 }
 
 
+let partida = new Game()
+
+setTimeout(function(){
+    partida.gameOver()
+    gameOverSound.play()
+},30000)
 
 
 
