@@ -2,7 +2,7 @@ let clicking = false;
 //Funcion constructora partida
 const Game = function () {
     let timerId = setInterval(function () {
-        new Fruit()
+        new Fruit(hitCounter)
     }, 5000)
 
     //Contador de tiempo
@@ -11,7 +11,7 @@ const Game = function () {
     }, 30000)
 
     //Contador de frutas
-       this.hitCounter = 0
+      let hitCounter = 0
         /*if (dettectCollision = true){
             let counter = 0;
             counter ++
@@ -23,8 +23,9 @@ const Game = function () {
 }
 
 //Funcion constructora fruta
-const Fruit = function (width, heigth) {
+const Fruit = function (counter) {
     let self = this
+    //this.counter = counter
     let fruitNest = [
         {
             name: 'apple',
@@ -71,7 +72,7 @@ const Fruit = function (width, heigth) {
         if (clicking) {
             let canvas = e.target.parentNode
             canvas.removeChild(e.target)
-            console.log(e)
+            console.log(counter++)
         }
     }
     this.element.addEventListener('mouseover', this.dettectCollision)
