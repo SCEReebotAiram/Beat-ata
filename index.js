@@ -54,11 +54,15 @@ const Fruit = function (width, heigth) {
     this.width = this.element.clientWidth
     this.element.style.backgroundImage = this.selectedFruit.image
     this.element.style.backgroundSize = 'contain'
+
     this.element.style.left = this.maxRandomNumber(900 - this.selectedFruit.width) + 'px'
+    this.element.style.left = this.maxRandomNumber(900-this.selectedFruit.width) + 'px'
+
     this.positionTop = 0
     this.addTopId = setInterval(function () {
         self.positionTop = self.positionTop + 1
         self.element.style.top = self.positionTop + 'px'
+
     }, 1)
     this.element.style.top = self.positionTop + 'px'
     this.checkPositionFruit = setInterval(function (e) {
