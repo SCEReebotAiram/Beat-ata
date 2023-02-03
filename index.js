@@ -78,7 +78,7 @@ setTimeout(function(){
     partida.gameOver()
 },30000)
 
-
+console.log()
 
 
 
