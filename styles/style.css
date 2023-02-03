@@ -5,26 +5,31 @@ body {
 #startScreen {
     margin: auto;
     display: block;
-    width: 900px;
     height: 600px;
-    background-color: white;
-    z-index: 1;
+    width: 900px;
+    background: rgb(232, 118, 146);
+    background: linear-gradient(180deg, rgba(232, 118, 146, 1) 0%, rgba(190, 246, 166, 1) 22%, rgba(188, 175, 232, 1) 39%, rgba(227, 227, 109, 1) 59%, rgba(232, 133, 133, 1) 76%, rgba(123, 160, 166, 1) 94%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 
 #canvas {
     margin: auto;
-    display: block;
-    width: 900px;
-    height: 600px;
-    background-color: brown;
+    display: none;
     position: relative;
+    height: 600px;
+    width: 900px;
+    background-image: url('/assets/images/background.jpg');background-size: contain;
+    
 }
 
 .apple {
     position: absolute;
     width: 40px;
     height: 40px;
-    z-index: 0;  
+    z-index: 0;
 }
 
 .pear {
@@ -38,4 +43,3 @@ body {
     width: 40px;
     height: 40px;
 }
-
