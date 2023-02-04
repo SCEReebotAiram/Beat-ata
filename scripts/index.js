@@ -4,7 +4,12 @@ const fruitDissFCanvas = new Audio('../assets/sounds/box-crash.mp3')
 const startSound = new Audio('../assets/sounds/happy.mp3')
 const gameOverSound = new Audio('../assets/sounds/trombone-gover.wav')
 const wellDoneSound = new Audio('../assets/sounds/goodresult.mp3')
-
+const mouseeeConfig = {
+    color: "#f542c8",  // cursor border color
+    size: 10,  // cursor size
+    trailColor: "#f542c8",  // trail color
+    trailTime: 100  // trail duration time
+  }
 let scorePoints = document.getElementById('score')
 let clicking = false
 let generationSpeed = 1000

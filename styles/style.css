@@ -49,7 +49,6 @@ body {
     width: 40px;
     height: 40px;
     z-index: 0;
-    /* transform: rotate(45deg); */
 }
 
 .pear {
@@ -64,7 +63,31 @@ body {
     height: 40px;
 }
 
-
-#playAgainBtn:hover {
-    border: 1px solid green;
+#start-game-btn , #playAgainBtn {
+    margin-top: 30px;
+    box-shadow:inset 0px 0px 14px -3px #f2fadc;
+	background:linear-gradient(to bottom, #e6ddca 5%, #918265 100%);
+	background-color:#e6ddca;
+	border-radius:6px;
+	border:1px solid #cfcfcf;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #aba290;
 }
+
+#start-game-btn:hover , #playAgainBtn:hover {
+	background:linear-gradient(to bottom, #918265 5%, #e6ddca 100%);
+	background-color:#918265;
+}
+#start-game-btn:active , #playAgainBtn:active {
+	position:relative;
+	top:1px;
+}
+
+        
