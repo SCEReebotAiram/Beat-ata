@@ -7,18 +7,11 @@ let scorePoints = document.getElementById('score')
 let clicking = false
 let generationSpeed = 1000
 
-buttonStart.addEventListener('click', function () {
-    let canvas = document.getElementById('canvas')
-    let startScreen = document.getElementById('startScreen')
-    startScreen.style.display = 'none'
-    canvas.style.display = 'block'
-    let partida = new Game()
-})
 
 
 const Game = function () {
     let timeSpan = document.getElementById('timeSpan')
-    this.gameTime = 10000
+    this.gameTime = 15000
     this.chronoTime = this.gameTime / 1000 //seconds 
     let counter = { value: 0 }
     let startSound = new Audio('../assets/sounds/happy.mp3');
@@ -42,10 +35,24 @@ const Game = function () {
         gameOver = true
         if (this.gameOver) {
             let finishScreen = document.getElementById('finishScreen')
-            finishScreen.style.display = 'block'
+            let message = `You smashed ${counter.value} piñatas.`
+            let secondMesagge;
+            if (counter.value > 10) {
+                secondMesagge = 'Well done!'
+            } else {
+                secondMesagge = 'Try harder!'
+            }
+            finishScreen.innerHTML = `<div> ${message} ${secondMesagge}!</div>
+            <span id='playAgainBtn'>Play again?</span>
+            `
+            let restartBtn = document.getElementById('playAgainBtn')
+            restartBtn.onclick = function() {
+                location.reload()
+            }
+            finishScreen.style.display = 'flex'
             canvas.style.display = 'none'
         }
-    }, this.gameTime + 1000)
+    }, this.gameTime + 1500)
 }
 
 
@@ -83,7 +90,6 @@ const Fruit = function (counter) {
     this.element.style.backgroundSize = 'contain'
     this.maxWidth = 900 - this.selectedFruit.width
     this.element.style.left = this.maxRandomNumber(this.maxWidth) + 'px'
-
     this.positionTop = 0
     this.addTopId = setInterval(function () {
         self.positionTop = self.positionTop + 1
@@ -103,7 +109,6 @@ const Fruit = function (counter) {
             let canvas = e.target.parentNode
             canvas.removeChild(e.target)
             soundCollision.play()
-            console.log(parseInt(scorePoints))
             counter.value++
 
         }
@@ -121,3 +126,11 @@ canvas.onmousedown = function (e) {
 canvas.onmouseup = function () {
     clicking = !clicking
 }
+
+buttonStart.addEventListener('click', function () {
+    let canvas = document.getElementById('canvas')
+    let startScreen = document.getElementById('startScreen')
+    startScreen.style.display = 'none'
+    canvas.style.display = 'block'
+    let partida = new Game()
+})
