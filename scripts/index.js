@@ -1,22 +1,23 @@
 const buttonStart = document.getElementById('start-game-btn')
 const soundCollision = new Audio('../assets/sounds/slashkut.mp3')
-const gameOverSound = new Audio('../assets/sounds/game-over.mp3')
 const fruitDissFCanvas = new Audio('../assets/sounds/box-crash.mp3')
+const startSound = new Audio('../assets/sounds/happy.mp3')
+const gameOverSound = new Audio('../assets/sounds/trombone-gover.wav')
+const wellDoneSound = new Audio('../assets/sounds/goodresult.mp3')
 
 let scorePoints = document.getElementById('score')
 let clicking = false
 let generationSpeed = 1000
 
-
-
-const Game = function () {
+const Game = function () { 
     let timeSpan = document.getElementById('timeSpan')
     this.gameTime = 15000
     this.chronoTime = this.gameTime / 1000 //seconds 
     let counter = { value: 0 }
-    let startSound = new Audio('../assets/sounds/happy.mp3');
     let self = this
     this.startGame = setInterval(function () {
+        startSound.play()
+        startSound.volume=0.3
         // testing to change generationSpeed with item sliced counter
         new Fruit(counter)
     }, generationSpeed)
@@ -38,9 +39,15 @@ const Game = function () {
             let message = `You smashed ${counter.value} piñatas.`
             let secondMesagge;
             if (counter.value > 10) {
-                secondMesagge = 'Well done!'
+            secondMesagge = 'Well done!'
+            startSound.pause()
+            wellDoneSound.play()
+            wellDoneSound.volume=0.5
             } else {
-                secondMesagge = 'Try harder!'
+            secondMesagge = 'Try harder!'
+            startSound.pause()
+            gameOverSound.play()
+            gameOverSound.volume=0.4
             }
             finishScreen.innerHTML = `<div> ${message} ${secondMesagge}!</div>
             <span id='playAgainBtn'>Play again?</span>
@@ -51,6 +58,7 @@ const Game = function () {
             }
             finishScreen.style.display = 'flex'
             canvas.style.display = 'none'
+            
         }
     }, this.gameTime + 1500)
 }
@@ -83,6 +91,7 @@ const Fruit = function (counter) {
     this.maxRandomNumber = function (max = 880) {
         return Math.floor(Math.random() * max)
     }
+    
     this.selectedFruit = fruitNest[this.maxRandomNumber(fruitNest.length)]
     this.element.setAttribute('class', this.selectedFruit.name)
     this.width = this.element.clientWidth
@@ -102,6 +111,7 @@ const Fruit = function (counter) {
             clearInterval(self.checkPositionFruit)
             self.element.parentNode.removeChild(self.element)
             fruitDissFCanvas.play()
+            fruitDissFCanvas.volume=0.4
         }
     }, 10)
     this.dettectCollision = function (e) {
@@ -109,6 +119,7 @@ const Fruit = function (counter) {
             let canvas = e.target.parentNode
             canvas.removeChild(e.target)
             soundCollision.play()
+            soundCollision.volume = 0.4
             counter.value++
 
         }
