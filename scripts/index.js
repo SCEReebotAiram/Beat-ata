@@ -91,9 +91,16 @@ const Fruit = function (counter) {
     this.maxWidth = 900 - this.selectedFruit.width
     this.element.style.left = this.maxRandomNumber(this.maxWidth) + 'px'
     this.positionTop = 0
+    this.degrees = 0
+    this.addRotation = function () {
+        self.degrees ++
+        self.element.style.transform = `rotate(${self.degrees}deg)`
+    }
     this.addTopId = setInterval(function () {
+        // self.degrees ++
         self.positionTop = self.positionTop + 1
         self.element.style.top = self.positionTop + 'px'
+        self.addRotation() 
     }, 1)
     this.element.style.top = self.positionTop + 'px'
     this.checkPositionFruit = setInterval(function () {
@@ -113,6 +120,7 @@ const Fruit = function (counter) {
 
         }
     }
+   
     this.element.addEventListener('mouseover', this.dettectCollision)
     this.canvas = document.getElementById('canvas')
     this.canvas.appendChild(this.element)
