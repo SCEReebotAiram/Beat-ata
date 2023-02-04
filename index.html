@@ -3,16 +3,21 @@
 
 <head>
     <meta charset="UTF-8">
-    <script src="/index.js" defer></script>
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <script src="scripts/index.js" defer></script>
+    <title>BeatÑata!</title>
+    <link rel="stylesheet" href="/styles/style.css">
 </head>
 
 <body>
-    <div id="canvas">
-        <!--<div id="apple"></div>
-        <div id="pear"></div>-->
+    <div id="startScreen">
+        <button id="start-game-btn">Start game</button>
     </div>
+    <div id="canvas">
+        <span id="score">0
+        </span>
+        <div id="timer">Time left: <span id="timeSpan"></span>:00''</div>    
+    </div>
+    <div id="finishScreen"></div>
 </body>
 
 </html>
