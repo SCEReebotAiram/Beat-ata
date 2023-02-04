@@ -7,8 +7,7 @@ body {
     display: block;
     height: 600px;
     width: 900px;
-    background: rgb(232, 118, 146);
-    background: linear-gradient(180deg, rgba(232, 118, 146, 1) 0%, rgba(190, 246, 166, 1) 22%, rgba(188, 175, 232, 1) 39%, rgba(227, 227, 109, 1) 59%, rgba(232, 133, 133, 1) 76%, rgba(123, 160, 166, 1) 94%);
+    background-image: url('/assets/images/background.jpg');background-size: contain;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,9 +20,26 @@ body {
     position: relative;
     height: 600px;
     width: 900px;
-    background-image: url('/assets/images/background.jpg');background-size: contain;
-    
+    background-image: url('/assets/images/background-2.png');background-size: contain;
 }
+
+#score {
+    position: absolute;
+}
+
+#timer {
+    position: absolute;
+    right: 10px;
+}
+
+#finishScreen {
+        margin: auto;
+        display: none;
+        height: 600px;
+        width: 900px;
+        background-image: url('/assets/images/background.jpg');background-size: contain;
+}
+
 
 .apple {
     position: absolute;
