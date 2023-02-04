@@ -31,18 +31,18 @@ const Fruit = function (counter) {
             name: 'apple',
             width: 40,
             heigth: 40,
-            image: "url('./assets/apple.png')",
+            image: "url('./assets/images/Pinata1.png')",
         }, {
             name: 'pear',
             width: 40,
             heigth: 40,
-            image: "url('./assets/pear.png')",
+            image: "url('./assets/images/Pinata2.png')",
 
         }, {
             name: 'peach',
             width: 40,
             heigth: 40,
-            image: "url('./assets/peach.png')",
+            image: "url('./assets/images/Pinata3.png')",
         }
     ]
     this.element = document.createElement('div')
