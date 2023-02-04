@@ -37,7 +37,7 @@ body {
         display: none;
         height: 600px;
         width: 900px;
-        background-image: url('/assets/images/background.jpg');background-size: contain;
+        background-image: url('/assets/images/background-2.png');background-size: contain;
         flex-direction: column;
         align-items: center;
         justify-content: center;
