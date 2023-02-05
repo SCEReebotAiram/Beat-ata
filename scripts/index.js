@@ -4,19 +4,14 @@ const fruitDissFCanvas = new Audio('../assets/sounds/box-crash.mp3')
 const startSound = new Audio('../assets/sounds/happy.mp3')
 const gameOverSound = new Audio('../assets/sounds/trombone-gover.wav')
 const wellDoneSound = new Audio('../assets/sounds/goodresult.mp3')
-const mouseeeConfig = {
-    color: "#f542c8",  // cursor border color
-    size: 10,  // cursor size
-    trailColor: "#f542c8",  // trail color
-    trailTime: 100  // trail duration time
-  }
+
 let scorePoints = document.getElementById('score')
 let clicking = false
 let generationSpeed = 1000
 
 const Game = function () { 
     let timeSpan = document.getElementById('timeSpan')
-    this.gameTime = 15000
+    this.gameTime = 30000
     this.chronoTime = this.gameTime / 1000 //seconds 
     let counter = { value: 0 }
     let self = this
@@ -111,7 +106,6 @@ const Fruit = function (counter) {
         self.element.style.transform = `rotate(${self.degrees}deg)`
     }
     this.addTopId = setInterval(function () {
-        // self.degrees ++
         self.positionTop = self.positionTop + 1
         self.element.style.top = self.positionTop + 'px'
         self.addRotation() 
