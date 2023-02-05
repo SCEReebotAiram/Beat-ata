@@ -72,26 +72,46 @@ const Game = function () {
 
 
 const Fruit = function (counter) {
-  let self = this
-  let fruitNest = [
-    {
-      name: 'apple',
-      width: 40,
-      heigth: 40,
-      image: "url('./assets/images/apple.png')",
-    },
-    {
-      name: 'pear',
-      width: 40,
-      heigth: 40,
-      image: "url('./assets/images/pear.png')",
 
-    },
-    {
-      name: 'peach',
-      width: 40,
-      heigth: 40,
-      image: "url('./assets/images/peach.png')",
+    let self = this
+    let fruitNest = [
+        {
+            name: 'apple',
+            width: 160,
+            heigth: 120,
+            image: "url('./assets/images/pinata1.png')",
+        },
+        {
+            name: 'pear',
+            width: 160,
+            heigth: 120,
+            image: "url('./assets/images/pinata2.png')",
+
+        },
+        {
+            name: 'peach',
+            width: 160,
+            heigth: 120,
+            image: "url('./assets/images/pinata3.png')",
+        }
+    ]
+    this.element = document.createElement('div')
+    this.maxRandomNumber = function (max = 880) {
+        return Math.floor(Math.random() * max)
+    }
+    
+    this.selectedFruit = fruitNest[this.maxRandomNumber(fruitNest.length)]
+    this.element.setAttribute('class', this.selectedFruit.name)
+    this.width = this.element.clientWidth
+    this.element.style.backgroundImage = this.selectedFruit.image
+    this.element.style.backgroundSize = 'contain'
+    this.maxWidth = 900 - this.selectedFruit.width
+    this.element.style.left = this.maxRandomNumber(this.maxWidth) + 'px'
+    this.positionTop = 0
+    this.degrees = 0
+    this.addRotation = function () {
+        self.degrees ++
+        self.element.style.transform = `rotate(${self.degrees}deg)`
     }
   ]
   this.element = document.createElement('div')
