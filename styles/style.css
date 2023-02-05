@@ -11,7 +11,8 @@ body {
     background-size: contain;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    flex-direction: column;
 }
 
 
@@ -27,21 +28,22 @@ body {
 
 #score {
     position: absolute;
+    bottom: 10px;
     font-family: 'Wendy One', sans-serif;
     font-size: 25px;
-    padding-top: 30px;
     padding-left: 20px;
     color: hsl(40, 18%, 30%);
 }
 
 #timer {
     position: absolute;
-    padding-top: 30px;
     padding-right: 10px;
+    bottom: 10px;
     right: 10px;
     font-family: 'Wendy One', sans-serif;
     font-size: 25px;
     color: hsl(40, 18%, 30%);
+    
 }
 
 #finishScreen {
@@ -49,7 +51,7 @@ body {
     display: none;
     height: 600px;
     width: 900px;
-    background-image: url('/assets/images/background-2.png');
+    background-image: url('/assets/images/end_game_screen.png');
     background-size: contain;
     flex-direction: column;
     align-items: center;
@@ -60,37 +62,34 @@ body {
 }
 
 
-.apple {
+.pinata1 {
     position: absolute;
     width: 150px;
     height: 119px;
-    
 }
 
-.pear {
+.pinata2 {
     position: absolute;
     width: 150px;
     height: 119px;
-   
 }
 
-.peach {
+.pinata3 {
     position: absolute;
     width: 150px;
     height: 119px;
-    
 
 }
 
 #start-game-btn,
 #playAgainBtn {
-    margin-top: 30px;
+    /* margin-top: -65px; */
     box-shadow: inset 0px 0px 14px -3px #f2fadc;
     background: linear-gradient(to bottom, #e6ddca 5%, #918265 100%);
     background-color: #e6ddca;
     border-radius: 6px;
     border: 1px solid #cfcfcf;
-    display: inline-block;
+    display: block;
     cursor: pointer;
     color: hsl(40, 18%, 30%);
     font-family: Arial;
@@ -114,7 +113,11 @@ body {
     top: 1px;
 }
 
-#logo {
-    display: inline-flex;
-    
+.logo {
+    margin-top: 30px;
+    transform:scale(0.85);
+}
+
+#playAgainBtn {
+    margin-top: 30px;
 }

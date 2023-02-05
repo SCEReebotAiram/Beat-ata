@@ -1,20 +1,25 @@
 const buttonStart = document.getElementById('start-game-btn')
 const soundCollision = new Audio('../assets/sounds/slashkut.mp3')
-const fruitDissFCanvas = new Audio('../assets/sounds/box-crash.mp3')
+const pinatatDissFCanvas = new Audio('../assets/sounds/box-crash.mp3')
 const startSound = new Audio('../assets/sounds/happy.mp3')
 const gameOverSound = new Audio('../assets/sounds/trombone-gover.wav')
 const wellDoneSound = new Audio('../assets/sounds/goodresult.mp3')
 const CANVAS = document.getElementById('canvas')
 const STARTSCREEN = document.getElementById('startScreen')
+const FINISHSCREEN = document.getElementById('finishScreen')
 
-let scorePoints = document.getElementById('score')
+const scorePoints = document.getElementById('score')
+const timer = document.querySelector('#timer')
+scorePoints.draggable = 'false'
+timer.draggable = 'false'
+
 let clicking = false
-let generationSpeed = 5000
-
+let generationSpeed = 1000
 
 const Game = function () {
   let timeSpan = document.getElementById('timeSpan')
-  this.gameTime = 100000
+  this.goal = 15
+  this.gameTime = 20000
   this.chronoTime = this.gameTime / 1000 //seconds 
   let counter = { value: 0 }
   let self = this
@@ -22,10 +27,10 @@ const Game = function () {
     startSound.play()
     startSound.volume = 0.3
     // testing to change generationSpeed with item sliced counter
-    new Fruit(counter)
+    new Item(counter)
   }, generationSpeed)
   this.counterChanger = setInterval(function () {
-    scorePoints.innerText = `Smashed piñatas: ${counter.value}`
+    scorePoints.innerText = `Smashed piñatas: ${counter.value} / ${self.goal}`
   }, 500)
   this.startTime = setInterval(function () {
     timeSpan.innerText = `${self.chronoTime--}`
@@ -36,16 +41,19 @@ const Game = function () {
       clearInterval(i)
     }
   }
+  this.removeAllChilds = function (classname) {
+    let arr = document.querySelectorAll('[class*='+classname+']')
+    arr.forEach(el => el.parentNode.removeChild(el))
+  }
   this.gameOver = setTimeout(function () {
     clearInterval(this.startGame)
     self.killAllInterval()
 
     gameOver = true
     if (this.gameOver) {
-      let finishScreen = document.getElementById('finishScreen')
       let message = `You smashed ${counter.value} piñatas.`
       let secondMesagge;
-      if (counter.value >= 10) {
+      if (counter.value >= self.goal) {
         secondMesagge = 'Well done!'
         startSound.pause()
         wellDoneSound.play()
@@ -56,12 +64,15 @@ const Game = function () {
         gameOverSound.play()
         gameOverSound.volume = 0.4
       }
-      finishScreen.innerHTML = `<div> ${message} ${secondMesagge}!</div>
+      FINISHSCREEN.innerHTML = `<div> ${message} ${secondMesagge}!</div>
             <span id='playAgainBtn'>Play again?</span>
             `
       let restartBtn = document.getElementById('playAgainBtn')
       restartBtn.onclick = function () {
-        location.reload()
+        self.removeAllChilds('pinata')
+        FINISHSCREEN.style.display = 'none'
+        CANVAS.style.display = 'block'
+        let partida = new Game()
       }
       finishScreen.style.display = 'flex'
       canvas.style.display = 'none'
@@ -71,67 +82,48 @@ const Game = function () {
 }
 
 
-const Fruit = function (counter) {
+const Item = function (counter) {
 
     let self = this
-    let fruitNest = [
+    let pinataBox = [
         {
-            name: 'apple',
+            name: 'pinata1',
             width: 160,
             heigth: 120,
             image: "url('./assets/images/pinata1.png')",
         },
         {
-            name: 'pear',
+            name: 'pinata2',
             width: 160,
             heigth: 120,
             image: "url('./assets/images/pinata2.png')",
 
         },
         {
-            name: 'peach',
+            name: 'pinata3',
             width: 160,
             heigth: 120,
             image: "url('./assets/images/pinata3.png')",
         }
     ]
-    this.element = document.createElement('div')
-    this.maxRandomNumber = function (max = 880) {
-        return Math.floor(Math.random() * max)
-    }
-    
-    this.selectedFruit = fruitNest[this.maxRandomNumber(fruitNest.length)]
-    this.element.setAttribute('class', this.selectedFruit.name)
-    this.width = this.element.clientWidth
-    this.element.style.backgroundImage = this.selectedFruit.image
-    this.element.style.backgroundSize = 'contain'
-    this.maxWidth = 900 - this.selectedFruit.width
-    this.element.style.left = this.maxRandomNumber(this.maxWidth) + 'px'
-    this.positionTop = 0
-    this.degrees = 0
-    this.addRotation = function () {
-        self.degrees ++
-        self.element.style.transform = `rotate(${self.degrees}deg)`
-    }
-  ]
   this.element = document.createElement('div')
   this.maxRandomNumber = function (max = 880) {
     return Math.floor(Math.random() * max)
   }
-  this.selectedFruit = fruitNest[this.maxRandomNumber(fruitNest.length)]
-  this.element.setAttribute('class', this.selectedFruit.name)
+  this.selectedFruit = pinataBox[this.maxRandomNumber(pinataBox.length)]
+  this.element.setAttribute('class', self.selectedFruit.name)
   this.width = this.element.clientWidth
   this.element.style.backgroundImage = this.selectedFruit.image
   this.element.style.backgroundSize = 'contain'
-  this.maxWidth = 900 - this.selectedFruit.width
-  this.element.style.left = this.maxRandomNumber(this.maxWidth) + 'px'
+  this.maxWidth = 895 - this.selectedFruit.width
+  this.element.style.left = this.maxRandomNumber(this.maxWidth)+5 + 'px'
   let initialPosLeft = self.element.style.left.slice(0, -2)
   this.positionLeft = initialPosLeft
   this.positionTop = 0
   this.degrees = 0
-  this.direction = 1
+  // this.direction = 1
   this.addRotation = function () {
-    self.degrees++
+    self.degrees+= 0.5
     self.element.style.transform = `rotate(${self.degrees}deg)`
   }
   this.addFall = function () {
@@ -149,12 +141,12 @@ const Fruit = function (counter) {
 
   }, 1)
   this.checkPositionFruit = setInterval(function (e) {
-    if (parseInt(self.element.style.top.slice(0, -2)) > 560 && self.element.parentNode || self.positionLeft > 850) {
+    if (parseInt(self.element.style.top.slice(0, -2)) > 600-self.selectedFruit.heigth && self.element.parentNode || self.positionLeft > 850) {
       clearInterval(self.startMovement)
       clearInterval(self.checkPositionFruit)
       self.element.parentNode.removeChild(self.element)
-      fruitDissFCanvas.play()
-      fruitDissFCanvas.volume = 0.4
+      pinatatDissFCanvas.play()
+      pinatatDissFCanvas.volume = 0.4
     }
   }, 10)
   this.dettectCollision = function (e) {
@@ -170,10 +162,10 @@ const Fruit = function (counter) {
     CANVAS.appendChild(this.element)
 }
 
-Fruit.prototype = Object.create(Game)
-Fruit.prototype.constructor = Fruit
+Item.prototype = Object.create(Game)
+Item.prototype.constructor = Item
 
-CANVAS.onmousedown = function (e) {
+CANVAS.onmousedown = function () {
   clicking = !clicking
 }
 CANVAS.onmouseup = function () {

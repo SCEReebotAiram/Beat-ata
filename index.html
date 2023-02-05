@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <script src="scripts/index.js" defer></script>
     <title>BeatÑata!</title>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,15 +14,15 @@
 
 <body>
     <div id="startScreen">
-       <!--div class="logo">
-            <img src='assets\images\beatnata_transp.png'>
-       </div-->
+       <div class="logo">
+            <img src='/assets/images/Logo_cropped.png'>
+       </div>
         <button id="start-game-btn">Start game</button>
     </div>
     <div id="canvas">
         <span id="score">0
         </span>
-        <div id="timer">Time left: <span id="timeSpan"></span>:00''</div>
+        <span id="timer">Time left: <span id="timeSpan"></span>:00''</span>
     </div>
     <div id="finishScreen"></div>
 </body>
