@@ -25,11 +25,21 @@ body {
 
 #score {
     position: absolute;
+    font-family: 'Wendy One', sans-serif;
+    font-size: 25px;
+    padding-top: 30px;
+    padding-left: 20px;
+    color:hsl(40, 18%, 30%);
 }
 
 #timer {
     position: absolute;
+    padding-top: 30px;
+    padding-right: 10px;
     right: 10px;
+    font-family: 'Wendy One', sans-serif;
+    font-size: 25px;
+    color:hsl(40, 18%, 30%);
 }
 
 #finishScreen {
@@ -41,26 +51,29 @@ body {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        font-family: 'Wendy One', sans-serif;
+        font-size: 30px;
+        color:hsl(40, 18%, 30%);
 }
 
 
 .apple {
     position: absolute;
-    width: 40px;
-    height: 40px;
+    width: 160px;
+    height: 120px;
     z-index: 0;
 }
 
 .pear {
     position: absolute;
-    width: 40px;
-    height: 40px;
+    width: 160px;
+    height: 120px;
 }
 
 .peach {
     position: absolute;
-    width: 40px;
-    height: 40px;
+    width: 160px;
+    height: 120px;
 }
 
 #start-game-btn , #playAgainBtn {
@@ -72,13 +85,14 @@ body {
 	border:1px solid #cfcfcf;
 	display:inline-block;
 	cursor:pointer;
-	color:#ffffff;
+	color:hsl(40, 18%, 30%);
 	font-family:Arial;
 	font-size:15px;
 	font-weight:bold;
 	padding:6px 24px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #aba290;
+    font-family: 'Wendy One', sans-serif;
 }
 
 #start-game-btn:hover , #playAgainBtn:hover {
