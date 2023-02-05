@@ -69,22 +69,22 @@ const Fruit = function (counter) {
     let fruitNest = [
         {
             name: 'apple',
-            width: 40,
-            heigth: 40,
-            image: "url('./assets/images/apple.png')",
+            width: 160,
+            heigth: 120,
+            image: "url('./assets/images/pinata1.png')",
         },
         {
             name: 'pear',
-            width: 40,
-            heigth: 40,
-            image: "url('./assets/images/pear.png')",
+            width: 160,
+            heigth: 120,
+            image: "url('./assets/images/pinata2.png')",
 
         },
         {
             name: 'peach',
-            width: 40,
-            heigth: 40,
-            image: "url('./assets/images/peach.png')",
+            width: 160,
+            heigth: 120,
+            image: "url('./assets/images/pinata3.png')",
         }
     ]
     this.element = document.createElement('div')
