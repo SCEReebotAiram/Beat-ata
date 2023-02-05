@@ -25,6 +25,8 @@ body {
 
 #score {
     position: absolute;
+    right: 10px;
+    top: 20px;
 }
 
 #timer {
