@@ -1,6 +1,6 @@
 body {
     background-color: black;
-    cursor: url(../assets/images/bat_square.png), auto;  
+    cursor: url('../assets/images/bat_square.png'),auto;  
 }
 
 #startScreen {
@@ -83,9 +83,6 @@ body {
 
 }
 
-#start-game-btn {
-    cursor: url('PngItem_1103799.png');
-}
 
 #start-game-btn,
 #playAgainBtn {
