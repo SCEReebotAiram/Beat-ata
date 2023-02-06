@@ -1,19 +1,34 @@
 const Game = function () {
   let timeSpan = document.getElementById('timeSpan')
-  this.goal = 15
-  this.gameTime = 20000
+  this.gameTime = 30000
+  this.goal = this.gameTime/1000 + Math.ceil(this.gameTime/1000/4)
   this.chronoTime = this.gameTime / 1000 //seconds 
   let counter = { value: 0 }
   let self = this
+  startSound.play()
+  startSound.volume = 0.3
   this.startGame = setInterval(function () {
-    startSound.play()
-    startSound.volume = 0.3
-    // testing to change generationSpeed with item sliced counter
     new Item(counter)
   }, generationSpeed)
+  this.generationSpeedUp = function () {
+    clearInterval(self.startGame)
+    let newSpeed = 0
+      if(self.gameTime > 30000) {
+        newSpeed = 1.1
+    } else {
+      newSpeed = 1.25
+    }
+    this.startGame = setInterval(function () {
+      new Item(counter)
+      console.log(generationSpeed)
+    }, generationSpeed /= newSpeed)
+  }
   this.counterChanger = setInterval(function () {
     scorePoints.innerText = `Smashed piñatas: ${counter.value} / ${self.goal}`
-  }, 500)
+    if (counter.value > 0 && self.chronoTime % 5 === 0) {
+      self.generationSpeedUp()
+    }
+  }, 550)
   this.startTime = setInterval(function () {
     timeSpan.innerText = `${self.chronoTime--}`
   }, 1000)
@@ -54,6 +69,7 @@ const Game = function () {
         self.removeAllChilds('pinata')
         FINISHSCREEN.style.display = 'none'
         CANVAS.style.display = 'block'
+        generationSpeed = 1000
         let partida = new Game()
       }
       finishScreen.style.display = 'flex'
