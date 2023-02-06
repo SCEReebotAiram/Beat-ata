@@ -16,6 +16,7 @@ timer.draggable = 'false'
 let clicking = false
 let generationSpeed = 1000
 
+
 CANVAS.onmousedown = function () {
   clicking = !clicking
 }
@@ -26,5 +27,26 @@ CANVAS.onmouseup = function () {
 buttonStart.addEventListener('click', function () {
   STARTSCREEN.style.display = 'none'
   CANVAS.style.display = 'block'
-  let partida = new Game()
+  // let partida = new Game()
+})
+
+CANVAS.addEventListener('mousemove', function(e) {
+  let array = []
+  let y = e.clientY; x = e.clientX
+  if (clicking) {
+    let element = document.createElement('div')
+    element.style.position = 'absolute'
+    element.style.top = y + 'px'
+    element.style.left = x - ((window.innerWidth - 900) / 2)  +'px'
+    // element.style.backgroundColor = 'black'
+    // element.style.boxShadow = '5px 5px 5px 1px #'
+    element.style.boxShadow = '5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 49px 5px rgba(148,255,234,0)'
+    element.style.display = 'block'
+    element.style.height = '2px'
+    element.style.width = '2px'
+    CANVAS.appendChild(element)
+    setTimeout(function(){
+      CANVAS.removeChild(element)
+    },100)
+  }
 })

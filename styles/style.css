@@ -25,6 +25,7 @@ body {
     width: 900px;
     background-image: url('/assets/images/background-2.png');
     background-size: contain;
+    overflow: hidden;
 }
 
 #score {
@@ -82,9 +83,12 @@ body {
 
 }
 
+#start-game-btn {
+    cursor: url('PngItem_1103799.png');
+}
+
 #start-game-btn,
 #playAgainBtn {
-    /* margin-top: -65px; */
     box-shadow: inset 0px 0px 14px -3px #f2fadc;
     background: linear-gradient(to bottom, #e6ddca 5%, #918265 100%);
     background-color: #e6ddca;
