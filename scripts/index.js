@@ -1,6 +1,6 @@
 const buttonStart = document.getElementById('start-game-btn')
 const soundCollision = new Audio('../assets/sounds/beat-audio-short.mp3')
-const pinatatDissFCanvas = new Audio('../assets/sounds/box-crash.mp3')
+const pinatatDissFCanvas = new Audio('../assets/sounds/beatata-crash-floor.mp3')
 const startSound = new Audio('../assets/sounds/happy.mp3')
 const gameOverSound = new Audio('../assets/sounds/trombone-gover.wav')
 const wellDoneSound = new Audio('../assets/sounds/goodresult.mp3')
@@ -15,10 +15,6 @@ timer.draggable = 'false'
 
 let clicking = false
 let generationSpeed = 1000
-
-
-
-
 
 CANVAS.onmousedown = function () {
   clicking = !clicking
