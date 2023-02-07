@@ -1,6 +1,6 @@
 body {
     background-color: black;
-    cursor: url('../assets/images/bat_square.png'),auto;  
+    cursor: url('./assets/images/bat_square.png'),auto;  
 }
 
 #startScreen {
