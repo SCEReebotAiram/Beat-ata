@@ -33,19 +33,20 @@ const Game = function () {
     timeSpan.innerText = `${self.chronoTime--}`
   }, 1000)
   this.killAllInterval = function () {
-    let highestInterval = 1000
+    let highestInterval = 1000000
     for (let i = 1; i < highestInterval; i++) {
       clearInterval(i)
     }
   }
   this.removeAllChilds = function (classname) {
-    let arr = document.querySelectorAll('[class*='+classname+']')
+    let arr = document.querySelectorAll('[class*=' + classname + ']')
     arr.forEach(el => el.parentNode.removeChild(el))
   }
   this.gameOver = setTimeout(function () {
     clearInterval(this.startGame)
     self.killAllInterval()
-
+    generationSpeed = 1000
+    newSpeed = 1
     gameOver = true
     if (this.gameOver) {
       let message = `You smashed ${counter.value} piñatas.`
@@ -67,9 +68,10 @@ const Game = function () {
       let restartBtn = document.getElementById('playAgainBtn')
       restartBtn.onclick = function () {
         self.removeAllChilds('pinata')
+        self.removeAllChilds('mousetrace')
+        clicking = false
         FINISHSCREEN.style.display = 'none'
         CANVAS.style.display = 'block'
-        generationSpeed = 1000
         let partida = new Game()
       }
       finishScreen.style.display = 'flex'
