@@ -1,7 +1,7 @@
 const Game = function () {
   let timeSpan = document.getElementById('timeSpan')
   this.gameTime = 30000
-  this.goal = this.gameTime/1000 + Math.ceil(this.gameTime/1000/4)
+  this.goal = this.gameTime / 1000 + Math.ceil(this.gameTime / 1000 / 4)
   this.chronoTime = this.gameTime / 1000 //seconds 
   let counter = { value: 0 }
   let self = this
@@ -13,8 +13,8 @@ const Game = function () {
   this.generationSpeedUp = function () {
     clearInterval(self.startGame)
     let newSpeed = 0
-      if(self.gameTime > 30000) {
-        newSpeed = 1.1
+    if (self.gameTime > 30000) {
+      newSpeed = 1.1
     } else {
       newSpeed = 1.25
     }

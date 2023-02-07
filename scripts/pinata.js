@@ -26,12 +26,12 @@ this.element = document.createElement('div')
 this.maxRandomNumber = function (max = 880) {
   return Math.floor(Math.random() * max)
 }
-this.selectedFruit = pinataBox[this.maxRandomNumber(pinataBox.length)]
-this.element.setAttribute('class', self.selectedFruit.name)
+this.selectedPinata = pinataBox[this.maxRandomNumber(pinataBox.length)]
+this.element.setAttribute('class', self.selectedPinata.name)
 this.width = this.element.clientWidth
-this.element.style.backgroundImage = this.selectedFruit.image
+this.element.style.backgroundImage = this.selectedPinata.image
 this.element.style.backgroundSize = 'contain'
-this.maxWidth = 895 - this.selectedFruit.width
+this.maxWidth = 895 - this.selectedPinata.width
 this.element.style.left = this.maxRandomNumber(this.maxWidth)+5 + 'px'
 let initialPosLeft = self.element.style.left.slice(0, -2)
 this.positionLeft = initialPosLeft
@@ -56,10 +56,10 @@ this.startMovement = setInterval(function () {
   // self.addLateralMovement()
 
 }, 1)
-this.checkPositionFruit = setInterval(function (e) {
-  if (parseInt(self.element.style.top.slice(0, -2)) > 600-self.selectedFruit.heigth && self.element.parentNode || self.positionLeft > 850) {
+this.checkPositionPinata = setInterval(function (e) {
+  if (parseInt(self.element.style.top.slice(0, -2)) > 600-self.selectedPinata.heigth && self.element.parentNode || self.positionLeft > 850) {
     clearInterval(self.startMovement)
-    clearInterval(self.checkPositionFruit)
+    clearInterval(self.checkPositionPinata)
     self.element.parentNode.removeChild(self.element)
     pinatatDissFCanvas.play()
     pinatatDissFCanvas.volume = 0.4
