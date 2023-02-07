@@ -20,7 +20,6 @@ const Game = function () {
     }
     this.startGame = setInterval(function () {
       new Item(counter)
-      console.log(generationSpeed)
     }, generationSpeed /= newSpeed)
   }
   this.counterChanger = setInterval(function () {
