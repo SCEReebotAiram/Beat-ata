@@ -1,6 +1,6 @@
 body {
     background-color: black;
-    cursor: url('/assets/images/bat.png'),auto;  
+    cursor: url('./assets/images/bat.png'),auto;  
 }
 
 #startScreen {
@@ -8,7 +8,7 @@ body {
     display: block;
     height: 600px;
     width: 900px;
-    background-image: url('/assets/images/background.jpg');
+    background-image: url('./assets/images/background.jpg');
     background-size: contain;
     display: flex;
     align-items: center;
@@ -23,7 +23,7 @@ body {
     position: relative;
     height: 600px;
     width: 900px;
-    background-image: url('/assets/images/background-2.png');
+    background-image: url('./assets/images/background-2.png');
     background-size: contain;
     overflow: hidden;
 }
@@ -53,7 +53,7 @@ body {
     display: none;
     height: 600px;
     width: 900px;
-    background-image: url('/assets/images/end_game_screen.png');
+    background-image: url('./assets/images/end_game_screen.png');
     background-size: contain;
     flex-direction: column;
     align-items: center;
